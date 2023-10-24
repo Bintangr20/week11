@@ -1,29 +1,25 @@
 version: '3'
-
-networks:
-  app-tier:
-    driver: bridge
-
 services:
-  todo-api-example:
-    build: .
-    networks:
-      - app-tier
+  app:
+    build:
+      context: .
     ports:
       - "3000:3000"
     depends_on:
-      - dbpgsql
-    volumes:
-      - ".:/todo-api-tugas/src/app"
-  dbpgsql:
-    image: postgres:12
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=todos
+      - DB_USER=postgres
+      - DB_PASSWORD=bintang2002
+
+  db:
+    image: postgres:latest
     ports:
       - "5432:5432"
-    env_file:
-      - .env
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
-    networks:
-      - app-tier
+      - POSTGRES_DB=todos
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=bintang2002
+
