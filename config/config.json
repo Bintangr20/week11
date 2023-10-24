@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "bintang2002",
+    "database": "todos",
+    "host": "dbpgsql",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "bintang2002",
+    "database": "todos_test",
+    "host": "dbpgsql",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "bintang2002",
+    "database": "todos_o_test",
+    "dialect": "postgres"
+  }
+}
+
